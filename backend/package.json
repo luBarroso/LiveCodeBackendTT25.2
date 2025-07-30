@@ -1,0 +1,38 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx ts-node-dev --transpile-only --no-notify server.ts",
+    "migrate": "npx prisma migrate dev --name init"
+  },
+  "prisma": {
+    "schema": "src/models/schema.prisma",
+    "seed": "ts-node src/models/seed/seeder.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "@prisma/client": "^6.12.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "prisma": "^6.12.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@types/multer": "^2.0.0",
+    "bcrypt": "^6.0.0",
+    "multer": "^2.0.2",
+    "zod": "^4.0.13"
+  }
+}
