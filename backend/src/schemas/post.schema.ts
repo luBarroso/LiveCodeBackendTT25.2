@@ -14,9 +14,6 @@ export const createPost = z.object({
 
   status: StatusEnum,
 
-  senderEmail: z
-    .email("O email do remetente deve ser válido"),
-
   recipientEmail: z
     .email("O email do destinatário deve ser válido")
     .optional()
@@ -37,11 +34,5 @@ export const updatePost = z.object({
 });
 
 export const postParams = z.object({
-  id: z
-    .string()
-    .regex(/^\d+$/, "O ID deve ser um número inteiro")
-    .transform(Number),
-
-  senderEmail: z
-    .email("O email do remetente nos parâmetros é inválido"),
+  idPost: z.string(),
 });

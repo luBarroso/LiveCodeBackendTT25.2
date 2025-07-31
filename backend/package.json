@@ -1,11 +1,15 @@
 {
-  "name": "backend",
+  "name": "livecode_backend",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx ts-node-dev --transpile-only --no-notify server.ts",
-    "migrate": "npx prisma migrate dev --name init"
+    "keys": "npx ts-node src/config/generateRSAKeyPair.ts",
+    "reset": "npx prisma generate && npx prisma db push && npx prisma migrate reset",
+    "studio": "npx prisma studio",
+    "migrate": "npx prisma migrate dev --name init",
+    "seed": "npx prisma db seed"
   },
   "prisma": {
     "schema": "src/models/schema.prisma",
@@ -21,18 +25,23 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.1.0",
+    "@types/passport": "^1.0.16",
+    "@types/passport-jwt": "^4.0.1",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "prisma": "^6.12.0",
     "ts-node": "^10.9.2",
-    "tsx": "^4.20.3",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   },
   "dependencies": {
     "@types/multer": "^2.0.0",
-    "bcrypt": "^6.0.0",
+    "crypto": "^1.0.1",
+    "jsonwebtoken": "^9.0.2",
     "multer": "^2.0.2",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
     "zod": "^4.0.13"
   }
 }

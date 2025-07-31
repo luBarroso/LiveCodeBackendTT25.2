@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #edf7eb;
+  --color-secundary: #222831;
+
+  --font-roboto: "Roboto", sans-serif;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    background-color: #eeeeee;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  body {
+    font-family: font-roboto;
+    letter-spacing: -0.03em;
+  }
+
+  body {
+    @apply antialiased bg-white;
+  }
+}

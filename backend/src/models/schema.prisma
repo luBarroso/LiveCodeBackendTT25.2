@@ -8,30 +8,30 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Status{
+enum Status {
   PUBLIC
   PRIVATE
 }
 
 model User {
-  email             String    @id @default(cuid())
-  name              String
-  password          String
-  hash              String
-  salt              String
-  post              Post[]    @relation("sender")
-  receipt           Post[]    @relation("recipient")
+  id       String @id @default(uuid())
+  email    String @unique
+  name     String
+  hash     String
+  salt     String
+  posts    Post[] @relation("sender")
+  receipts Post[] @relation("recipient")
 }
 
 model Post {
-  id                Int       @id @default(autoincrement())
-  tittle            String    
-  content           String    
-  imageUrl          String?
-  status            Status
-  sender            User      @relation("sender", fields: [senderEmail], references: [email])
-  senderEmail       String
-  recipient         User?     @relation("recipient", fields: [recipientEmail], references: [email])
-  recipientEmail    String?
-  createAt          DateTime  @default(now())
+  id             Int      @id @default(autoincrement())
+  tittle         String
+  content        String
+  imageUrl       String?
+  status         Status
+  sender         User     @relation("sender", fields: [senderEmail], references: [email])
+  senderEmail    String
+  recipient      User?    @relation("recipient", fields: [recipientEmail], references: [email])
+  recipientEmail String?
+  createAt       DateTime @default(now())
 }
